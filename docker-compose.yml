@@ -2,8 +2,7 @@ services:
   database:
     container_name: ${CONTAINER_BASENAME}_database
     image: mariadb:jammy
-    networks:
-      - chevereto
+    
     volumes:
       - database:/var/lib/mysql
     restart: always
@@ -21,9 +20,7 @@ services:
   php:
     container_name: ${CONTAINER_BASENAME}_php
     image: ${IMAGE}
-    networks:
-      - chevereto
-      - nginx-proxy
+    
     volumes:
       - storage:/var/www/html/images/
     restart: always
@@ -55,7 +52,4 @@ volumes:
   storage:
   #app: uncomment when using CHEVERETO_SERVICING=server
 
-networks:
-  chevereto:
-  nginx-proxy:
-    external: true
+
